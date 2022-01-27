@@ -1,0 +1,16 @@
+@import '../paper/css/paper-dashboard.css';
+@import '../paper/css/bootstrap.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css';
+@import 'https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css';
+/* Header */
+@import './style.css';
+@import './nprogress.css';
+
+/* @import '../vendor/bootstrap/css/bootstrap.min.css'; */
+@import '../vendor/font-awesome/css/font-awesome.min.css';
+@import '../vendor/ionicons/css/ionicons.min.css';
+@import '../vendor/venobox/venobox.css';
+@import '../vendor/owl.carousel/assets/owl.carousel.min.css';
+
+@import './new.css';
