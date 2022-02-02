@@ -13,17 +13,17 @@
             <div class="p-4 carousel-item active">
               <div class="testimonial-item">
                 <img
-                  src="/media/img/testimonial-1.jpg"
+                  src="/media/img/testimonial-1.png"
                   class="testimonial-img"
                   alt=""
                 />
-                <h3>Oluwatobi Ishola</h3>
+                <h3>John T. Davis</h3>
                 <h4>Customer / Investor</h4>
                 <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec
-                  porttitora entum suscipit rhoncus. Accusantium quam, ultricies
-                  eget id, aliquam eget nibh et. Maecen aliquam, risus at
-                  semper.
+                  As an investor I am constantly searching for solid investment
+                  opportunities and the ones presented by MoreBitcoin and the
+                  team always rise to the top. I have invested in several plans
+                  and each has met or exceeded my well-calculated projections.
                 </p>
               </div>
             </div>
@@ -31,17 +31,18 @@
             <div class="p-4 carousel-item">
               <div class="testimonial-item">
                 <img
-                  src="/media/img/testimonial-1.jpg"
+                  src="/media/img/testimonial-1.png"
                   class="testimonial-img"
                   alt=""
                 />
-                <h3>Oluwatobi Ishola</h3>
+                <h3>Lukas Neustadt</h3>
                 <h4>Customer / Investor</h4>
                 <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec
-                  porttitora entum suscipit rhoncus. Accusantium quam, ultricies
-                  eget id, aliquam eget nibh et. Maecen aliquam, risus at
-                  semper.
+                  Simple, reliable, scalable, and consistent - that's what I
+                  look for in passive investments and MoreBitcoin continues to
+                  deliver. MoreBitcoin and the team do the heavy lifting,
+                  generating competitive returns for investors in the form of
+                  both cash and peace of mind.
                 </p>
               </div>
             </div>
@@ -49,17 +50,17 @@
             <div class="p-4 carousel-item">
               <div class="testimonial-item">
                 <img
-                  src="/media/img/testimonial-1.jpg"
+                  src="/media/img/testimonial-1.png"
                   class="testimonial-img"
                   alt=""
                 />
-                <h3>Oluwatobi Ishola</h3>
+                <h3>Sam Burns</h3>
                 <h4>Customer / Investor</h4>
                 <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec
-                  porttitora entum suscipit rhoncus. Accusantium quam, ultricies
-                  eget id, aliquam eget nibh et. Maecen aliquam, risus at
-                  semper.
+                  I'm also consistently impressed with the communication - the
+                  team is accessible, candid, and patient. It all adds up to the
+                  return vs. risk being tremendously attractive, and I'm happy
+                  to invest here over and over again.
                 </p>
               </div>
             </div>

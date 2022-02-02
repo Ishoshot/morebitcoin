@@ -16,7 +16,9 @@
                     <p class="card-category">Last Investment</p>
                     <p class="card-title">
                       {{
-                        dashCardData["amountUSD"] | formatAmount("USD", "en-US")
+                        dashCardData
+                          ? dashCardData["amountUSD"]
+                          : 0 | formatAmount("USD", "en-US")
                       }}
                     </p>
                     <p></p>
@@ -46,8 +48,9 @@
                     <p class="card-category">Total Investment</p>
                     <p class="card-title">
                       {{
-                        dashCardData["totalInvestmentUSD"]
-                          | formatAmount("USD", "en-US")
+                        dashCardData
+                          ? dashCardData["totalInvestmentUSD"]
+                          : 0 | formatAmount("USD", "en-US")
                       }}
                     </p>
                     <p></p>
@@ -76,7 +79,9 @@
                   <div class="numbers">
                     <p class="card-category">Investments</p>
                     <p class="card-title">
-                      {{ dashCardData["totalInvestmentCount"] }}
+                      {{
+                        dashCardData ? dashCardData["totalInvestmentCount"] : 0
+                      }}
                     </p>
                     <p></p>
                   </div>

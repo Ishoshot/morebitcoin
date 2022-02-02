@@ -523,6 +523,22 @@
                             <p>
                               Wallet Address:
                               {{ accountDetails[0].accountNumber }}
+                              <copy-to-clipboard
+                                :text="accountDetails[0].accountNumber"
+                                @copy="handleCopy"
+                              >
+                                <button
+                                  class="
+                                    btn btn-sm btn-dark
+                                    border-0
+                                    py-1
+                                    px-2
+                                    m-0
+                                  "
+                                >
+                                  Copy
+                                </button>
+                              </copy-to-clipboard>
                             </p>
                             <p>
                               Wallet Owner:
@@ -535,6 +551,22 @@
                             <p>
                               Wallet Address:
                               {{ accountDetails[1].accountNumber }}
+                              <copy-to-clipboard
+                                :text="accountDetails[1].accountNumber"
+                                @copy="handleCopy"
+                              >
+                                <button
+                                  class="
+                                    btn btn-sm btn-dark
+                                    border-0
+                                    py-1
+                                    px-2
+                                    m-0
+                                  "
+                                >
+                                  Copy
+                                </button>
+                              </copy-to-clipboard>
                             </p>
                             <p>
                               Wallet Owner:
@@ -634,10 +666,14 @@
 import { mapActions, mapGetters, mapMutations } from "vuex";
 import NProgress from "nprogress";
 import { AccountDetails } from "/config";
+import CopyToClipboard from "vue-copy-to-clipboard";
 const axios = require("axios").default;
 
 export default {
   name: "Invest",
+  components: {
+    CopyToClipboard,
+  },
 
   data() {
     return {
@@ -675,6 +711,14 @@ export default {
     ...mapActions(["createInvestment", "updateInvestment"]),
 
     ...mapMutations(["setInvestmentBackEndSuccess"]),
+
+    handleCopy(result) {
+      this.$toast.open({
+        message: result + " copied to clipboard",
+        type: "success",
+        position: "top",
+      });
+    },
 
     cancel() {
       this.$router.go(0);
