@@ -38,7 +38,7 @@
                 <div class="px-2 py-3 graph py-md-4 py-lg-5 px-md-3 px-lg-4">
                   <pie-chart
                     :chartData="chartData"
-                    v-if="Object.keys(chartData).length > 1"
+                    v-if="chartData && Object.keys(chartData).length > 1"
                   ></pie-chart>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                 <div class="px-2 py-3 graph py-md-4 py-lg-5 px-md-3 px-lg-4">
                   <chart
                     :chartData="chartData"
-                    v-if="Object.keys(chartData).length > 1"
+                    v-if="chartData && Object.keys(chartData).length > 1"
                   ></chart>
                 </div>
               </div>
@@ -115,7 +115,6 @@ export default {
     this.getOngoingInvestments();
     this.getDashCardData();
     this.getChartData();
-    console.log(this.chartData);
   },
 
   methods: {
