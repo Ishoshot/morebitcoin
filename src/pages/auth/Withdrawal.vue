@@ -206,7 +206,7 @@
                       shadow-sm
                       justify-content-center
                     "
-                    v-else-if="singleInvestment.status === 'rejected'"
+                    v-else-if="singleWithdrawal.status === 'rejected'"
                   >
                     <div class="d-flex flex-row justify-content-around">
                       <div class="pie-icon bg-danger">

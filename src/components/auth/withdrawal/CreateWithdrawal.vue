@@ -152,10 +152,10 @@ export default {
       this.$store.commit("setWithBackEndObjError", {});
       const valid = await this.validateCreateWithdrawal();
       if (valid) {
-        if (this.amount > this.userDetails.profile.available_balance) {
-          this.withdrawError = "You don't have enough balance";
-          return false;
-        }
+        // if (this.amount > this.userDetails.profile.available_balance) {
+        //   this.withdrawError = "You don't have enough balance";
+        //   return false;
+        // }
         await this.convertUSDtoBTC();
         let data = {
           uid: this.uuidv4(),

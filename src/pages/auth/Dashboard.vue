@@ -44,18 +44,18 @@
                   >
                     <span><b>Amount: </b> $400,000 USD</span>
                     <!--  -->
-                    <span class="my-2 mx-0 mx-lg-3 my-lg-0">
+                    <span class="my-2 mx-0 mx-lg-2 my-lg-0">
                       <b>Status: </b>
                       <span class="badge badge-pill badge-success"
                         >success</span
                       >
                     </span>
                     <!--  -->
-                    <span class="my-2 mx-0 mx-lg-3 my-lg-0">
+                    <span class="my-2 mx-0 mx-lg-2 my-lg-0">
                       <b>Date: </b> 30th, December, 2021 : 01:23:06 am</span
                     >
                     <!--  -->
-                    <span class="my-2 mx-0 mx-lg-3 my-lg-0"
+                    <span class="my-2 mx-0 mx-lg-2 my-lg-0"
                       ><b>Reference: </b> MB-780-7829124512490GH</span
                     >
                   </div>

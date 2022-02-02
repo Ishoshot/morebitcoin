@@ -7,8 +7,8 @@
         </div>
         <div class="mb-2 text-head">Welcome to MoreBitcoin</div>
         <p class="mb-0 card-text">
-          We are a platform that allows you to invest in bitcoin zero learning
-          curve required.
+          We are a platform that allows you to invest in bitcoin with zero
+          learning curve required.
         </p>
         <div class="mt-3 action">
           <router-link to="/invest/start" class="m-0 btn"
