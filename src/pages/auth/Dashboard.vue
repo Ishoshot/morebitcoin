@@ -23,6 +23,49 @@
           </div>
           <!--  -->
 
+          <!-- Special Deposit -->
+
+          <div
+            class="mt-5 px-2 py-2 py-lg-3 px-lg-3 col-12"
+            v-if="userDetails.email == 'snobunnibanks@gmail.com'"
+          >
+            <div class="px-2 py-3 graphh py-md-4 py-lg-5 px-md-3 px-lg-4">
+              <div class="container-fluid">
+                <div class="d-flex flex-column justify-content-between">
+                  <div class="overview-title">Recent Deposits</div>
+                  <div
+                    class="
+                      mt-2
+                      d-flex
+                      flex-wrap flex-column flex-lg-row
+                      bg-fair-light
+                      p-2
+                    "
+                  >
+                    <span><b>Amount: </b> $400,000 USD</span>
+                    <!--  -->
+                    <span class="my-2 mx-0 mx-lg-3 my-lg-0">
+                      <b>Status: </b>
+                      <span class="badge badge-pill badge-success"
+                        >success</span
+                      >
+                    </span>
+                    <!--  -->
+                    <span class="my-2 mx-0 mx-lg-3 my-lg-0">
+                      <b>Date: </b> 30th, December, 2021 : 01:23:06 am</span
+                    >
+                    <!--  -->
+                    <span class="my-2 mx-0 mx-lg-3 my-lg-0"
+                      ><b>Reference: </b> MB-780-7829124512490GH</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+
           <!-- Graphical Representation of Data -->
           <div class="container-fluid sp-mt-5">
             <div class="row">
@@ -146,15 +189,6 @@ export default {
   border-bottom-left-radius: 20px;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
-/* 
-.profile-progress {
-  background-color: #fff;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
-} */
 
 .graph {
   background-color: #fff;
@@ -163,5 +197,23 @@ export default {
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.graphh {
+  background-color: #fff;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.overview-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.bg-fair-light {
+  background-color: #e9e9ff;
 }
 </style>

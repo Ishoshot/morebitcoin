@@ -33,6 +33,37 @@
           id="navigation"
         >
           <ul class="navbar-nav">
+            <li class="mr-3 nav-item btn-rotate dropdown">
+              <a
+                class="nav-link dropdown-toggle text-dark"
+                href="#"
+                id="navbarDropdownMenuLink2"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <p>
+                  <span class="mr-2">Liquidity</span>
+                </p>
+              </a>
+
+              <div
+                class="dropdown-menu dropdown-menu-right"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <span
+                  class="dropdown-item"
+                  style="cursor: pointer"
+                  @click="alertErr"
+                  >Deposits</span
+                >
+
+                <router-link class="dropdown-item" to="/withdrawals"
+                  >Withdrawals</router-link
+                >
+              </div>
+            </li>
+
             <li
               class="mr-3 nav-item btn-rotate dropdown"
               v-if="userDetails.role.key !== 'user'"
@@ -104,7 +135,17 @@ export default {
   computed: {
     ...mapGetters(["userRole", "userDetails"]),
   },
-  methods: {},
+  methods: {
+    alertErr() {
+      this.$toast.open({
+        message:
+          "Due to a lot of deposits in recent hours, we're working on an upgrade for our deposit system. Please check back later.",
+        position: "top-right",
+        type: "info",
+        duration: 4000,
+      });
+    },
+  },
 };
 </script>
 
