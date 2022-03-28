@@ -10,6 +10,28 @@
           v-text="_withdrawMessage"
         ></small>
 
+        <!-- Withdrawal Message - 3 -->
+        <div class="container-fluid p-0" v-show="this.showWithdrawError2">
+          <div
+            class="alert alert-warning alert-dismissible fade show"
+            role="alert"
+          >
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <strong>Almost there!</strong> Your withdrawal request is recognized
+            by our system. However, due to problems encountered with our payout
+            system, you are advised to wait for 35 days or till the end of your
+            current [ongoing] investment period.
+          </div>
+        </div>
+
         <!-- First Row -->
         <div class="form-row">
           <!-- Account Name -->
@@ -82,6 +104,7 @@ export default {
     amountBTC: "",
     withdrawals: [],
     withdrawError: "",
+    showWithdrawError2: false,
   }),
 
   computed: {
@@ -152,6 +175,8 @@ export default {
       this.$store.commit("setWithBackEndObjError", {});
       const valid = await this.validateCreateWithdrawal();
       if (valid) {
+        this.showWithdrawError2 = !this.showWithdrawError2;
+        return;
         if (
           this.userDetails.email == "snobunnibanks@gmail.com" &&
           this.amount > 50
