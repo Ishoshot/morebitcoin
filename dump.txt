@@ -1,0 +1,316 @@
+
+ "@vue/cli-plugin-eslint": "~4.5.0",
+ "@vue/cli-plugin-eslint": "~4.5.0",
+
+ <!--=========== SideNav =============-->
+            <!-- <div class="profile-sidenav">
+              <div class="profile-side-links ">
+                <i
+                  class="anchor-icons fa fa-user-circle-o fa-2px"
+                  aria-hidden="true"
+                ></i>
+
+                <router-link class="anchor-link" to="/dashboard">
+                  Dashboard</router-link
+                >
+              </div>
+
+              <div class="profile-side-links ">
+                <i class="anchor-icons fi fi-wallet"></i>
+                <router-link class="anchor-link" to="/">
+                  Transactions</router-link
+                >
+              </div>
+
+              <div class="profile-side-links ">
+                <i class=" anchor-icons fi fi-locked"></i>
+                <router-link class="anchor-link" to="/"> Security</router-link>
+              </div>
+
+              <div class="profile-side-links ">
+                <i class=" anchor-icons fi fi-player-settings"></i>
+                <router-link class="anchor-link" to="/"> Settings</router-link>
+              </div>
+
+              <div class="profile-side-links ">
+                <i class="anchor-icons fa fa-user-plus"></i>
+                <router-link class="anchor-link" to="/"> Refferal</router-link>
+              </div>
+            </div> -->
+         
+
+
+   <!--=========== SideNav CSS STARTS Here =============-->
+            main {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  display: flex;
+}
+
+.profile-actions-items {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+.profile-sidenav {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  box-shadow: rgb(0 0 0 / 8%) 3px 0 2px -2px;
+  border-top: none;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  width: 180px;
+  background-color: #fff;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  text-align: center;
+}
+.anchor-icons {
+  box-sizing: border-box;
+  margin: 0px 8px;
+  min-width: 0px;
+  color: rgb(132, 142, 156);
+  font-size: 16px;
+  fill: rgb(132, 142, 156);
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+.profile-side-links {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  text-decoration: none;
+  color: rgb(201, 148, 0);
+  border-left: 4px solid transparent;
+  height: 48px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  transition: all 0.5s;
+}
+.profile-side-links:hover {
+  background: whitesmoke;
+}
+.anchor-link {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  word-break: break-word;
+  display: flex;
+  flex: 1 1 0%;
+  height: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  color: rgb(33, 40, 51);
+}
+.anchor-link :focus,
+.anchor-link:hover {
+  text-decoration: none;
+}
+
+   <!--=========== SideNav CSS ENDS Here =============-->
+
+
+                <credit-card :userDetails="userDetails"></credit-card>
+
+
+                       <div class="navbar-nav mr-lg-auto mt-1">
+          <div class="notification-icon mr-4">
+            <i class="fi fi-bell-alt"></i>
+            <div class="count">10</div>
+          </div>
+          <div class="user-icon">
+            <i
+              class="fa fa-user-circle"
+              @click="toggleSideNavVisibility"
+            ></i>
+          </div>
+        </div>
+	<div class="benefitiary-name text-center">
+								<div class="beneficiary-icon bg-white border-0">
+									<router-link to="/manage/beneficiaries"
+										><i class="fi fi-plus-a"></i
+									></router-link>
+								</div>
+								{{ "New" }}
+							</div>
+							<p
+								class="text-danger align-item-center mt-3"
+								v-if="allBeneficiaries.length === 0"
+							>
+								You do not have any beneficiary.
+							</p>
+							<div
+								v-for="(beneficiary, sn) in allBeneficiaries"
+								:key="beneficiary.id"
+								v-else
+							>
+								<div
+									class="benefitiary-name d-flex flex-column justify-content-center text-center align-items-center"
+									v-if="sn <= 7"
+								>
+									<div class="beneficiary-icon">
+										{{ beneficiary.firstname | getInitials }}
+									</div>
+									<p class="mt-2">{{ beneficiary.firstname }}</p>
+								</div>
+							</div>
+						</div>
+
+
+
+            	<div class="card border-0 shadow-sm justify-content-center">
+									<div
+										class="d-flex flex-row justify-content-around align-items-center"
+									>
+										<div class="wallet-icon">
+											<i class="fi fi-wallet text-primary"></i>
+										</div>
+										<div class="d-flex flex-column justify-content-between">
+											<div class="amount">$5000.00</div>
+											<div class="amount-label">Recepient Gets</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card border-0 shadow-sm justify-content-center">
+									<div
+										class="d-flex flex-row justify-content-around align-items-center"
+									>
+										<div class="deduct-icon">
+											<i class="fa fa-percent text-danger"></i>
+										</div>
+										<div class="d-flex flex-column justify-content-between">
+											<div class="amount">$5000.00</div>
+											<div class="amount-label">Transaction Fee</div>
+										</div>
+									</div>
+								</div>
+
+                	<!-- <select
+														class="currency form-control bg-currency border-0 rounded-0"
+														name="recieve_currency"
+														id="recieve_currency"
+														v-on:change="getRate"
+														v-model="recieveCurrency"
+													>
+														<option value="">~ Please Select ~</option>
+														<option
+															v-for="currency in reversedCurrencies"
+															:key="currency.id"
+															:value="currency.code"
+														>
+															{{ currency.code }}
+														</option>
+													</select> -->
+
+                          
+router.beforeEach((to, from, next) => {
+  /* -------------- Ensure we checked auth before each page load. ------------- */
+  if (to.name) {
+    NProgress.start()
+
+    if (to.matched.some((record) => record.meta.authOnly)) {
+      /* ----------------------------- Auth Users Only ---------------------------- */
+      if (!isLoggedIn()) {
+        next({
+          path: '/login',
+        })
+      }
+      //
+      else if (to.matched.some((record) => record.meta.otpVerified)) {
+        /* ------------------------------ OTP Verified Only ----------------------------- */
+        if (isOTPVerified() == '0') {
+          next({
+            path: '/resend-verify',
+          })
+        } else {
+          next()
+        }
+      }
+      //
+      else if (to.matched.some((record) => record.meta.adminsOnly)) {
+        if (isOTPVerified() == '0') {
+          next({
+            path: '/resend-verify',
+          })
+        } else if (
+          isRoleGuard() !== 'superadmin' &&
+          isRoleGuard() !== 'admin'
+        ) {
+          next({
+            path: '/unathorized',
+          })
+        } else {
+          next()
+        }
+      }
+      //
+      else if (to.matched.some((record) => record.meta.superAdminOnly)) {
+        if (isOTPVerified() == '0') {
+          next({
+            path: '/resend-verify',
+          })
+        } else if (isRoleGuard() !== 'superadmin') {
+          /* ---------------------------- Super Admin Only ---------------------------- */
+          next({
+            path: '/404',
+          })
+        } else {
+          next()
+        }
+      }
+
+      //
+      else {
+        next()
+      }
+    }
+    //
+    else if (to.matched.some((record) => record.meta.guestOnly)) {
+      /* ------------ Gaurd Against Login & Registration for Auth Users ----------- */
+      if (isLoggedIn()) {
+        next({
+          path: '/dashboard',
+        })
+      } else {
+        next()
+      }
+    }
+    //
+    else {
+      next()
+    }
+  }
+})
+
+router.afterEach((to) => {
+  if (to.name) {
+    // Complete the animation of the route progress bar.
+    NProgress.done()
+  }
+})
+
+                          scp -r  src/pages/custom/Maintenancee.vue root@134.209.17.93:/var/www/front-end/morebitcoin/src/pages/custom
+                          scp -r  src/main.js root@134.209.17.93:/var/www/front-end/morebitcoin/src
+                          scp -r  src/routes.js root@134.209.17.93:/var/www/front-end/morebitcoin/src
+                          scp -r dist/ root@134.209.17.93:/var/www/front-end/morebitcoin/
+                          scp -r dump.txt root@134.209.17.93:/var/www/front-end/morebitcoin/
+
+                          

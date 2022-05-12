@@ -1,0 +1,114 @@
+
+.card {
+    background: #112;
+    min-width: 245px;
+    height: 110px;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.status-card {
+	background-image: linear-gradient(45deg, #7175da, #637ec2);
+    min-width: 245px;
+    height: 110px;
+    padding: 1rem;
+    border-radius: 10px;
+}
+.info-card{
+     background: #f9f9f9;
+     min-width: 245px;
+     height: auto;
+     padding: 1rem;
+     border-radius: 10px;
+}
+.pie-icon {
+    background: rgb(41, 167, 69, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.8rem;
+}
+
+.wallet-icon {
+    background: rgb(66, 135, 235, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.8rem;
+}
+
+.deduct-icon {
+    background: rgb(255, 1, 53, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.5rem;
+}
+
+.amount {
+    font-family: "Roboto Slab", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.amount-label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    color: grey;
+    text-align: center;
+}
+
+.trans-ref-card {
+    background: #fff;
+    border-radius: 10px;
+}
+
+.trans-inputBox {
+    background-color: rgb(26, 116, 187, 0.1);
+    border: none;
+    outline: none;
+    padding: 8px;
+}
+
+.trans-inputBox:focus {
+    border-color: none !important;
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.btn-ex-primary {
+    width: 55%;
+    height: 50px;
+    background-color: #ff0035 !important;
+    color: #fff !important;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    transition: 0.5s all;
+    text-transform: capitalize;
+    margin: 0px auto;
+}
+
+.btn-ex-primary:hover {
+    color: #ff0035 !important;
+    border: 1px solid #ff0035 !important;
+    background-color: transparent !important;
+}
+
+.info p{
+     font-family: "Roboto Slab",
+     sans-serif;
+     font-size: 13px;
+     color: grey;
+     text-align: center;
+}
