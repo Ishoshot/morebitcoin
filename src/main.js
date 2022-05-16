@@ -66,19 +66,81 @@ function isOTPVerified() {
   return localStorage.getItem('otp_vrd')
 }
 
+
 router.beforeEach((to, from, next) => {
   /* -------------- Ensure we checked auth before each page load. ------------- */
   if (to.name) {
     NProgress.start()
+
     if (to.matched.some((record) => record.meta.authOnly)) {
-      return next({
-        path: '/security/main-site/maintenance',
-      })
-    } else if (to.matched.some((record) => record.meta.guestOnly)) {
-      return next({
-        path: '/security/main-site/maintenance',
-      })
-    } else {
+      /* ----------------------------- Auth Users Only ---------------------------- */
+      if (!isLoggedIn()) {
+        next({
+          path: '/login',
+        })
+      }
+      //
+      else if (to.matched.some((record) => record.meta.otpVerified)) {
+        /* ------------------------------ OTP Verified Only ----------------------------- */
+        if (isOTPVerified() == '0') {
+          next({
+            path: '/resend-verify',
+          })
+        } else {
+          next()
+        }
+      }
+      //
+      else if (to.matched.some((record) => record.meta.adminsOnly)) {
+        if (isOTPVerified() == '0') {
+          next({
+            path: '/resend-verify',
+          })
+        } else if (
+          isRoleGuard() !== 'superadmin' &&
+          isRoleGuard() !== 'admin'
+        ) {
+          next({
+            path: '/unathorized',
+          })
+        } else {
+          next()
+        }
+      }
+      //
+      else if (to.matched.some((record) => record.meta.superAdminOnly)) {
+        if (isOTPVerified() == '0') {
+          next({
+            path: '/resend-verify',
+          })
+        } else if (isRoleGuard() !== 'superadmin') {
+          /* ---------------------------- Super Admin Only ---------------------------- */
+          next({
+            path: '/404',
+          })
+        } else {
+          next()
+        }
+      }
+
+      //
+      else {
+        next()
+      }
+    }
+    //
+    else if (to.matched.some((record) => record.meta.guestOnly)) {
+      /* ------------ Gaurd Against Login & Registration for Auth Users ----------- */
+      if (isLoggedIn()) {
+        next({
+          path: '/dashboard',
+        })
+      } else {
+        next()
+      }
+    }
+    //
+    else {
       next()
     }
   }

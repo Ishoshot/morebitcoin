@@ -49,4 +49,14 @@ export default {
       headers: { Authorization: `Bearer ${token}` },
     })
   },
+
+  /* ----------------------- Send OTP for password reset ---------------------- */
+  async callOTP(data) {
+    return Api.post(`/reset/send-otp`, data);
+  },
+
+  /* ------------------------------- Forget Password ---------------------------------------------- */
+  async forgetPassword(data) {
+    return Api.post(`/reset-password`, data)
+  }
 }

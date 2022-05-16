@@ -21,6 +21,8 @@ const state = {
   user: {},
 
   token: '',
+
+  otpMessage: ""
 }
 
 const getters = {
@@ -68,6 +70,10 @@ const getters = {
   verificationResult: () => {
     return state.emailVerification
   },
+
+  getOTPMessage: () => {
+    return state.otpMessage;
+  }
 }
 
 const actions = {
@@ -197,6 +203,47 @@ const actions = {
       })
   },
 
+
+  //Send OTP for password reset
+  callOTP: async ({ commit }, data) => {
+    await User.callOTP(data)
+      .then((res) => {
+        commit('setOTPMessage', res.data.message)
+      })
+      .catch((err) => {
+        console.log(err)
+        if (err.response.status == 404) {
+          const errMessage = 'User with this email not found'
+          commit('setLoginBackEndErr', errMessage)
+        } else {
+          const errMessage = 'Oops! An error occured, please try again!'
+          commit('setLoginBackEndErr', errMessage)
+        }
+      })
+  },
+
+  //Reset Password
+  resetPass: async ({ commit }, data) => {
+    await User.forgetPassword(data)
+      .then((res) => {
+        commit('setOTPMessage', res.data.message)
+      })
+      .catch((err) => {
+        console.log(err)
+        if (err.response.status == 404) {
+          const errMessage = 'User with this email not found'
+          commit('setLoginBackEndErr', errMessage)
+        }
+        else if (err.response.status == 401) {
+          const errMessage = 'OTP is not valid'
+          commit('setLoginBackEndErr', errMessage)
+        } else {
+          const errMessage = 'Oops! An error occured, please try again!'
+          commit('setLoginBackEndErr', errMessage)
+        }
+      })
+  },
+
   clearAfterVerify: ({ commit }) => {
     commit('clearAfterVerify')
   },
@@ -269,6 +316,10 @@ const mutations = {
   clearAfterVerify: (state) => {
     state.emailVerification = {}
   },
+
+  setOTPMessage: (state, msg) => {
+    state.otpMessage = msg
+  }
 }
 
 export default {

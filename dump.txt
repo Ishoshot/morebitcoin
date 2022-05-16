@@ -314,3 +314,28 @@ router.afterEach((to) => {
                           scp -r dump.txt root@134.209.17.93:/var/www/front-end/morebitcoin/
 
                           
+
+router.beforeEach((to, from, next) => {
+  /* -------------- Ensure we checked auth before each page load. ------------- */
+  if (to.name) {
+    NProgress.start()
+    if (to.matched.some((record) => record.meta.authOnly)) {
+      return next({
+        path: '/security/main-site/maintenance',
+      })
+    } else if (to.matched.some((record) => record.meta.guestOnly)) {
+      return next({
+        path: '/security/main-site/maintenance',
+      })
+    } else {
+      next()
+    }
+  }
+})
+
+router.afterEach((to) => {
+  if (to.name) {
+    // Complete the animation of the route progress bar.
+    NProgress.done()
+  }
+})

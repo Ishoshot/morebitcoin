@@ -3,22 +3,35 @@
     <template v-slot:body>
       <div class="sp-mb-6 sp-mt-10 container-fluid body">
         <div class="container">
-          <div class="mt-4 mb-5 contact-from-wrap">
-            <div class="mt-4 contact-form">
-              <div class="sec-heading">
-                <h3 class="sec-title">Proceed to Login</h3>
+          <div class="mt-5 mb-5 contact-from-wrap">
+            <div class="mt-5 contact-form">
+              <div class="sec-heading" v-if="step == 1">
+                <h3 class="sec-title">Finish to Reset Your Password</h3>
                 <p class="mb-0 text-muted">
                   Welcome back 👋
                   <span class="font-weight-bold">{{ userFirstName }}</span
-                  >, Provide Credentials to access your account.
+                  >, Please provide your email address
                 </p>
               </div>
 
-              <p class="mb-0 text-center text-danger" v-if="loginBackEndError">
+              <div class="sec-heading" v-if="step == 2">
+                <h3 class="sec-title">Almost done</h3>
+                <p class="mb-0 text-muted">
+                  Welcome back 👋
+                  <span class="font-weight-bold">{{ userFirstName }}</span
+                  >, Enter the OTP sent to your email and a new password
+                </p>
+              </div>
+
+              <p class="mb-2 text-danger" v-if="loginBackEndError">
                 {{ loginBackEndError }}
               </p>
 
-              <div class="clearfix contact-form">
+              <p class="mb-2 text-success" v-if="getOTPMessage">
+                {{ getOTPMessage }}
+              </p>
+
+              <div class="clearfix contact-form" v-if="step == 1">
                 <form>
                   <div class="contact-form form-area">
                     <div class="form-group">
@@ -48,30 +61,78 @@
                       </div>
                     </div>
 
+                    <div class="container-fluid">
+                      <div
+                        class="row justify-content-between align-items-center"
+                      >
+                        <div class="">
+                          <button
+                            @click.prevent="callOTPMail"
+                            class="btn login-btn"
+                            :disabled="isLoading ? true : false"
+                          >
+                            {{ isLoading ? "" : "Continue" }}
+                            <i
+                              :class="
+                                isLoading
+                                  ? 'mx-1 fi fi-spinner fi-spin fi-pulse'
+                                  : 'fa fa-arrow-right'
+                              "
+                            ></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Form Controls/Inputs -->
+                </form>
+              </div>
+
+              <!-- STEP 2 -->
+              <div class="clearfix contact-form" v-if="step == 2">
+                <form>
+                  <div class="contact-form form-area">
                     <div class="form-group">
                       <input
-                        type="password"
-                        autocomplete="off"
-                        v-model="form.password"
+                        type="otp"
+                        inputmode="otp"
+                        autocomplete="otp"
+                        v-model="form2.otp"
                         class="form-control ex-inputBox"
-                        placeholder="*Password"
+                        placeholder="*OTP"
                         :class="{
-                          'is-invalid': submitted && $v.form.password.$error,
+                          'is-invalid': submitted && $v.form2.otp.$error,
                         }"
                       />
                       <!--======= Validation Messsages =====-->
-
                       <div
-                        v-if="submitted && !$v.form.password.required"
+                        v-if="submitted && !$v.form2.otp.required"
                         class="error-messages"
                       >
-                        Password field is required.
+                        OTP is required.
                       </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        inputmode="password"
+                        autocomplete="password"
+                        v-model="form2.password"
+                        class="form-control ex-inputBox"
+                        placeholder="*New Password"
+                        :class="{
+                          'is-invalid': submitted && $v.form2.password.$error,
+                        }"
+                      />
+                      <!--======= Validation Messsages =====-->
                       <div
-                        v-if="submitted && !$v.form.password.minLength"
+                        v-if="submitted && !$v.form2.password.required"
                         class="error-messages"
                       >
-                        Password must be at least 8 characters
+                        Password is required.
                       </div>
                     </div>
 
@@ -79,23 +140,18 @@
                       <div
                         class="row justify-content-between align-items-center"
                       >
-                        <div class="p-2">
-                          <router-link to="/reset/password"
-                            >Forgot Password?</router-link
-                          >
-                        </div>
-                        <div class="p-2">
+                        <div class="">
                           <button
-                            @click.prevent="submitData"
+                            @click.prevent="resetPassword"
                             class="btn login-btn"
                             :disabled="isLoading ? true : false"
                           >
-                            {{ isLoading ? "" : "Login" }}
+                            {{ isLoading ? "" : "Continue" }}
                             <i
                               :class="
                                 isLoading
                                   ? 'mx-1 fi fi-spinner fi-spin fi-pulse'
-                                  : 'fa fa-lock'
+                                  : 'fa fa-arrow-right'
                               "
                             ></i>
                           </button>
@@ -127,6 +183,7 @@ export default {
       "loginBackEndError",
       "userDetails",
       "userToken",
+      "getOTPMessage",
     ]),
   },
   mounted() {},
@@ -137,10 +194,15 @@ export default {
       isLoading: false,
       delayLoading: 2,
       submitted: false,
+      step: 1,
 
       /* ---------------------------------  Form -------------------------------- */
       form: {
         email: "",
+      },
+
+      form2: {
+        otp: "",
         password: "",
       },
     };
@@ -152,45 +214,60 @@ export default {
         required,
         email,
       },
+    },
+    form2: {
+      otp: {
+        required,
+      },
       password: {
         required,
-        minLength: minLength(8),
       },
     },
   },
-
   methods: {
-    ...mapActions(["login", "clearAfterLogin"]),
-    /* -------------------------------------------------------------------------- */
-    /*                            Get User Device Info                            */
-    /* -------------------------------------------------------------------------- */
+    ...mapActions(["callOTP", "resetPass", "clearAfterLogin"]),
 
-    /* -------------------------------------------------------------------------- */
-    /*                                   Sign In                                  */
-    /* -------------------------------------------------------------------------- */
-    async submitData() {
+    async callOTPMail() {
       this.clearAfterLogin();
 
       this.isLoading = true;
       this.submitted = true;
-      this.$v.$touch();
-      if (this.$v.$invalid) {
+      this.$v.form.$touch();
+      if (this.$v.form.$invalid) {
+        this.isLoading = false;
+        console.log("inv");
+        return;
+      } else {
+        const data = {
+          email: this.form.email,
+        };
+        await this.callOTP(data);
+        this.isLoading = false;
+        this.step = 2;
+      }
+    },
+
+    async resetPassword() {
+      this.clearAfterLogin();
+      this.isLoading = true;
+      this.submitted = true;
+      this.$v.form2.$touch();
+      if (this.$v.form2.$invalid) {
         this.isLoading = false;
         return;
       } else {
         const data = {
           email: this.form.email,
-          password: this.form.password,
+          otp: this.form2.otp,
+          password: this.form2.password,
         };
-        // console.log(data);
-        // Call login
-        await this.login(data);
+        await this.resetPass(data);
         this.isLoading = false;
-        if (Object.keys(this.userDetails).length > 0) {
-          this.setUserAuthCredentials();
-          this.clearAfterLogin();
-          this.$router.push({ name: "dashboard" });
-        }
+        this.step = 1;
+        //redirect to login after 2 secs
+        setTimeout(() => {
+          this.$router.push("/login");
+        }, 2000);
       }
     },
 

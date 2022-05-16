@@ -13,6 +13,7 @@ import Maintenancee from './pages/custom/Maintenancee.vue'
 
 import Register from './pages/auth/Register.vue'
 import Login from './pages/auth/Login.vue'
+import ForgetPass from './pages/auth/ForgetPass.vue'
 import Dashboard from './pages/auth/Dashboard.vue'
 import Profile from './pages/auth/Profile.vue'
 import EditProfile from './pages/auth/EditProfile.vue'
@@ -57,6 +58,15 @@ export const routes = [
     name: 'login',
     path: '/login',
     component: Login,
+    meta: {
+      guestOnly: true,
+    },
+  },
+
+  {
+    name: 'forget-pass',
+    path: '/reset/password',
+    component: ForgetPass,
     meta: {
       guestOnly: true,
     },
