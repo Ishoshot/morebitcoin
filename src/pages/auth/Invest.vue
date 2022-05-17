@@ -87,7 +87,7 @@
               <div class="container">
                 <h4 class="state-header">Select a Plan</h4>
                 <div class="row align-items-top">
-                  <!-- <div
+                  <div
                     class="text-left sp-mt-3 col-12 col-sm-10 col-md-6 col-lg-6"
                     @click.prevent="choosePlan('Hydrogen')"
                   >
@@ -111,9 +111,9 @@
                         <p>Withdrawal Scope - 2</p>
                       </div>
                     </div>
-                  </div> -->
+                  </div>
 
-                  <!-- <div
+                  <div
                     class="text-left sp-mt-3 col-12 col-sm-10 col-md-6 col-lg-6"
                     @click.prevent="choosePlan('Helium')"
                   >
@@ -135,9 +135,9 @@
                         <p>Withdrawal Scope - 2</p>
                       </div>
                     </div>
-                  </div> -->
+                  </div>
 
-                  <!-- <div
+                  <div
                     class="text-left sp-mt-7 col-12 col-sm-10 col-md-6 col-lg-6"
                     @click.prevent="choosePlan('Lithium')"
                   >
@@ -161,9 +161,9 @@
                         <p>Withdrawal Scope - Daily</p>
                       </div>
                     </div>
-                  </div> -->
+                  </div>
 
-                  <!-- <div
+                  <div
                     class="text-left sp-mt-7 col-12 col-sm-10 col-md-6 col-lg-6"
                     @click.prevent="choosePlan('Beryllium')"
                   >
@@ -187,7 +187,7 @@
                         <p>Withdrawal Scope - Daily</p>
                       </div>
                     </div>
-                  </div> -->
+                  </div>
 
                   <div
                     class="text-left sp-mt-7 col-12 col-sm-10 col-md-6 col-lg-6"
