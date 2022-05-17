@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-2">
+  <!-- <div class="container p-2">
     <div class="box p-2">
       <div class="animation">
         <div class="one spin-one"></div>
@@ -20,6 +20,34 @@
         enabled soon.
       </p>
       <p class="mt-4">To help us fight this, Ensure you</p>
+      <ul>
+        <li>Keep your credentials safe</li>
+        <li>Always verify withdrawal accounts before initiation</li>
+        <li>
+          Report any suspicious act to us via email at
+          <b class="text-primary">support@morebitcoin.me</b>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+
+  <div class="container p-2">
+    <div class="box p-2">
+      <div class="animation">
+        <div class="one spin-one"></div>
+        <div class="two spin-two"></div>
+        <div class="three spin-one"></div>
+      </div>
+      <h1 class="mb-3">MoreBitcoin - Withdrawal Notice</h1>
+      <p>
+        Yaay! We have exciting news. As you know recently; we've been under a
+        cyber attack whose effect is hugely evident on us as a company. We've
+        sent out emails to our esteemed customers who are currently holders on a
+        matured investment. In this regard, You're advised to wait for an
+        additional period spanning up to your last investment duration.
+      </p>
+      <p class="mt-3">Your payout date would be <b>30/06/2022.</b></p>
+      <p class="mt-5">Dear Investors, Ensure you</p>
       <ul>
         <li>Keep your credentials safe</li>
         <li>Always verify withdrawal accounts before initiation</li>
