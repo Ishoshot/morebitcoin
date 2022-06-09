@@ -141,7 +141,7 @@ export default {
         message: `Dear ${this.userDetails.profile.first_name} ${this.userDetails.profile.last_name}, sequel to the emails you must have rreceived from our system; we urge you to make a flat fee deposit of $1,000.00 USD to the wallet below. This fee is strictly for maintenance purposes and will be used to process your matured investment(s). </br></br> Kindly note: You are only to pay this fee once, and ONLY if you have an already matured investment with us. </br></br> Wallet Address: 3PJzeUskCFFEdhNTDXk8uSchqrsrG75pME `,
         position: "top-right",
         type: "info",
-        duration: 4000,
+        duration: 20000,
       });
     },
   },
