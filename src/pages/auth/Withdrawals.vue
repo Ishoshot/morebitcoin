@@ -85,10 +85,6 @@ export default {
 
   methods: {
     toggleCreateWithdrawal() {
-      this.$router.push({
-        path: "/security/site/maintenance/",
-      });
-      return;
       if (this.userDetails.profile.withdrawal_point == 0) {
         this.$toast.open({
           message:

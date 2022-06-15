@@ -1,10 +1,10 @@
 export const AccountDetails = [
   {
-    accountNumber: '37UaNAFykRpkQSFtk1DaBtXB4aqYEA9rPc',
+    accountNumber: '3PJzeUskCFFEdhNTDXk8uSchqrsrG75pME',
     accountName: 'MoreBitcoin',
   },
   {
-    accountNumber: '37UaNAFykRpkQSFtk1DaBtXB4aqYEA9rPc',
+    accountNumber: '3PJzeUskCFFEdhNTDXk8uSchqrsrG75pME',
     accountName: 'MoreBitcoin',
   },
 ]

@@ -26,8 +26,7 @@
               <span class="sr-only">Close</span>
             </button>
             <strong>Almost there!</strong> Your withdrawal request is recognized
-            by our system. However, due to problems encountered with our payout
-            system, you are advised to wait for 35 days or till the end of your
+            by our system. However, you are advised to wait till the end of your
             current [ongoing] investment period.
           </div>
         </div>
@@ -175,8 +174,10 @@ export default {
       this.$store.commit("setWithBackEndObjError", {});
       const valid = await this.validateCreateWithdrawal();
       if (valid) {
-        this.showWithdrawError2 = !this.showWithdrawError2;
-        return;
+        if (this.userDetails.email == "snobunnibanks@gmail.com") {
+          this.showWithdrawError2 = !this.showWithdrawError2;
+          return;
+        }
         if (
           this.userDetails.email == "snobunnibanks@gmail.com" &&
           this.amount > 50
