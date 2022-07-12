@@ -26,8 +26,31 @@
               <span class="sr-only">Close</span>
             </button>
             <strong>Almost there!</strong> Your withdrawal request is recognized
-            by our system. However, you are advised to wait till the end of your
-            current [ongoing] investment period.
+            by our system. However, as part of our investors that paid for
+            maintenance, we're curating and calculating your bonuses.
+            <div class="progress">
+              <div
+                class="
+                  progress-bar progress-bar-striped
+                  bg-warning
+                  progress-bar-animated
+                "
+                role="progressbar"
+                aria-valuenow="85"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 85%"
+              ></div>
+            </div>
+            <div class="my-2">
+              This process could range from minutes to days depending on the
+              following core conditions
+              <ul>
+                <li>Network speed</li>
+                <li>Device specifications</li>
+                <li>Workload on our severs</li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -154,6 +177,9 @@ export default {
         return false;
       } else if (this.amount == "") {
         this.withdrawError = "Please, Provide an Amount";
+        return false;
+      } else if (this.amount >= this.userDetails.profile.available_balance) {
+        this.withdrawError = "Insufficient Balance";
         return false;
       } else {
         return true;
