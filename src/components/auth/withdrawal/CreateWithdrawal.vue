@@ -178,9 +178,6 @@ export default {
       } else if (this.amount == "") {
         this.withdrawError = "Please, Provide an Amount";
         return false;
-      } else if (this.amount >= this.userDetails.profile.available_balance) {
-        this.withdrawError = "Insufficient Balance";
-        return false;
       } else {
         return true;
       }
